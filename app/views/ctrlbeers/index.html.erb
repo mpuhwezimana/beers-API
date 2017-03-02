@@ -1,3 +1,16 @@
 <div ng-app="app">
-  {{ 1 + 1 }}
+<div ng-controller="ctrlbeers" ng-init="setup()">
+    <h1> Click on the name of the beer to get more details!!!</h1>
+    <div ng-repeat="beer in beers">
+      <h4 ng-click="toggleInfo(beer)">Beer Name: {{beer.name}}</h4>
+      <div ng-if="beer.visibility">
+      <p>Yeast: {{beer.yeast}}</p>
+      <p> alcohol: {{beer.alcohol}} %</p>
+      <p> style: {{beer.style}} %</p>
+      <p> blg: {{beer.blg}} %</p>
+      <p> hop: {{beer.hop}} %</p>
+      <p> ibu: {{beer.ibu}} %</p>
+      </div>
+    </div>
+  </div>
 </div>
