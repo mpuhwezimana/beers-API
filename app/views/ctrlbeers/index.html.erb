@@ -1,16 +1,48 @@
 <div ng-app="app">
 <div ng-controller="ctrlbeers" ng-init="setup()">
-    <h1> Click on the name of the beer to get more details!!!</h1>
-    <div ng-repeat="beer in beers">
-      <h4 ng-click="toggleInfo(beer)">Beer Name: {{beer.name}}</h4>
-      <div ng-if="beer.visibility">
-      <p>Yeast: {{beer.yeast}}</p>
-      <p> alcohol: {{beer.alcohol}} %</p>
-      <p> style: {{beer.style}} %</p>
-      <p> blg: {{beer.blg}} %</p>
-      <p> hop: {{beer.hop}} %</p>
-      <p> ibu: {{beer.ibu}} %</p>
+    <div >
+        Filter Beers: <input ng-model="filterQuery">
+        <button ng-click="toggleOrder('name')">Sort By Name</button>
+        <button ng-click="toggleOrder('alcohol')">Sort By Alcohol</button>
+        <h1>Number of Beers: {{beers.length}}</h1>
+         <table>
+          <tr>
+            <th>Name</th>
+            <th>Yeast</th>
+            <th>Alcohol</th>
+            <th>Style</th>
+            <th>Blg</th>
+            <th>Hop</th>
+            <th>Ibu</th>
+            <th>Delete Beer</th>
+
+          </tr>
+          <tr ng-repeat="beer in beers | filter: filterQuery | orderBy:orderAttribute">
+            <td>{{beer.name}}</td>
+            <td>{{beer.yeast}}</td>
+            <td>{{beer.alcohol}} %</td>
+            <td>{{beer.style}} %</td>
+            <td>{{beer.blg}} %</td>
+            <td>{{beer.hop}} %</td>
+            <td>{{beer.ibu}} %</td>
+            <td><button ng-click="deleteBeer(beer)"> Delete Beer</button></td>
+          </tr>
+          <tr>
+            <td><input ng-model="beerName"></td>
+            <td><input ng-model="beerYeast"></td>
+            <td><input ng-model="beerAlcohol"></td>
+            <td><input ng-model="beerStyle"></td>
+            <td><input ng-model="beerBlg"></td>
+            <td><input ng-model="beerHop"></td>
+            <td><input ng-model="beerHop"></td>
+            <td><input ng-model="beerIbu"></td>
+            <td><button ng-click="addBeer(beerName, beerYeast, beerAlcohol, beerStyle, beerBlg, beerHop, beerIbu)">Add Beer</button></td>
+          </tr>
+        </table>
       </div>
     </div>
+
+    </div>
+</div>
   </div>
 </div>

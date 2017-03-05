@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get "/", to: 'ctrlbeers#index'
   get "/beers", to: 'beers#index'
+  post "/beers", to: 'beers#create'
+  delete "/beers/:id", to: 'beers#destroy'
+  patch "/beers/:id", to: 'beers#update'
 
   namespace :api do
     namespace :v1 do
