@@ -27,10 +27,10 @@
     $scope.toggleInfo = function(beer) {
       beer.visibility = !beer.visibility;
     }
-    $scope.deleteBeer = function(index) {
-      $http.delete("/beers/#{id}.json").then(function(response) {
+    $scope.deleteBeer = function(beer, index) {
+      $http.delete("/beers/" + beer.id + ".json").then(function(response) {
       $scope.beers.splice(index, 1);
-      })
+      });
     }
 
     $scope.toggleOrder = function(attribute) {

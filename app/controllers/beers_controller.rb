@@ -19,8 +19,8 @@ class BeersController < ApplicationController
   end
 
   def destroy
-    @beer = Beers.find_by(id: params[:id])
+    @beer = Beer.find_by(id: params[:id])
     @beer.destroy
-    render json: @beer
+    render json: {message: "Beer Deleted"}
   end
 end

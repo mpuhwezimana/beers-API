@@ -1,7 +1,11 @@
 <div ng-app="app">
 <div ng-controller="ctrlbeers" ng-init="setup()">
+    <datalist id="names"> 
+    <option ng-repeat="beer in beers"> {{beer.name}}</option>
+    </datalist>
     <div >
-        Filter Beers: <input ng-model="filterQuery">
+      <div class="form-group">
+        Filter Beers: <input ng-model="filterQuery" list="names" class="form-control">
         <button ng-click="toggleOrder('name')">Sort By Name</button>
         <button ng-click="toggleOrder('alcohol')">Sort By Alcohol</button>
         <h1>Number of Beers: {{beers.length}}</h1>
@@ -25,7 +29,7 @@
             <td>{{beer.blg}} %</td>
             <td>{{beer.hop}} %</td>
             <td>{{beer.ibu}} %</td>
-            <td><button ng-click="deleteBeer(beer)"> Delete Beer</button></td>
+            <td><button ng-click="deleteBeer(beer, $index)"> Delete Beer</button></td>
           </tr>
           <tr>
             <td><input ng-model="beerName"></td>
@@ -39,6 +43,7 @@
             <td><button ng-click="addBeer(beerName, beerYeast, beerAlcohol, beerStyle, beerBlg, beerHop, beerIbu)">Add Beer</button></td>
           </tr>
         </table>
+      </div>
       </div>
     </div>
 
